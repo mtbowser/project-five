@@ -1,10 +1,17 @@
 package prj5;
-public class DoubleLinkedList<E> implements ListInterface<E>
+public class SongList<Song> extends DLList<Song>
 {
     //~ Fields ................................................................
-
+    
     //~ Constructors ..........................................................
-
+    // ----------------------------------------------------------
+    /**
+     * Create a new SongList object.
+     */
+    public SongList()
+    {
+        
+    }
     //~Public  Methods ........................................................
-
+    
 }

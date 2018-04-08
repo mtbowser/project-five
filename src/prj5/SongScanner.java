@@ -1,5 +1,7 @@
 package prj5;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 // -------------------------------------------------------------------------
@@ -14,26 +16,43 @@ public class SongScanner
 {
     // ~ Fields ................................................................
     Scanner scn;
-    String  fakeData;
 
 
     // ~ Constructors ..........................................................
-    // Uma Thurman,Fall Out Boy,2015,rock
-    // Upside Down,Diana Ross,1980,disco
-    // Watching the Detectives,Elvis Costello,1977,punk
+
     public SongScanner()
+        throws FileNotFoundException
     {
-        fakeData = "Uma Thurman,Fall Out Boy,2015,rock\r\n"
-            + "Upside Down,Diana Ross,1980,disco\r\n"
-            + "Watching the Detectives,Elvis Costello,1977,punk\r\n";
-        Scanner scn = new Scanner(fakeData);
+
+        scn = new Scanner(
+            new File(
+                "C:\\Users\\lil bo peep\\Downloads\\Prj5TestingInputFiles_20151116 (1).zip\\InputFiles\\SongList.csv"));
+        scn.useDelimiter(",");
         System.out.print(scn.next());
+        // Uma Thurman,Fall Out Boy,2015,rock
+        // Uma Thurman,Fall Out Boy,2015,rock
+        // Upside Down,Diana Ross,1980,disco
+        // Watching the Detectives,Elvis Costello,1977,punk
 
     }
+
+
     // ~Public Methods ........................................................
-    public Song loadSongs() 
+    public SongList<Song> loadSongs(Scanner scn)
     {
-        
+        SongList<Song> songs = new SongList<Song>();
+
+        while (scn.hasNext())
+        {
+            String str = scn.nextLine();
+            String[] songInfo = str.split(",");
+            Song song =
+                new Song(songInfo[0], songInfo[1], songInfo[2], songInfo[3]);
+           songs.add(song);
+           
+        }
+        return songs;
     }
+   
 
 }

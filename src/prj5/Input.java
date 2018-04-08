@@ -8,7 +8,7 @@ public class Input
     Scanner studentScan;
     Scanner songScan;
     //~ Constructors ..........................................................
-    public Input() 
+    public Input( ) 
     {
         
         
